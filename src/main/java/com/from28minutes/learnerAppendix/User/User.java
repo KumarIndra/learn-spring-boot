@@ -1,8 +1,15 @@
 package com.from28minutes.learnerAppendix.User;
 
+import jakarta.validation.constraints.Size;
+
 public class User {
+	
 	private int id;
+	
+	@Size(min = 2, message = "Name should be greater then 2 characters")
 	private String name;
+	
+	@Size(min = 5, message = "Description should be greater then 5 characters")
 	private String description;
 	
 	public User(int id, String name, String description) {

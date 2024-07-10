@@ -33,4 +33,9 @@ public class UserService {
 		users.add(user);
 		return user;
 	}
+	
+	public void deleteById(int id) {
+		Predicate<? super User> predicate = user -> user.getId() == (id);
+		users.removeIf(predicate);
+	}
 }
