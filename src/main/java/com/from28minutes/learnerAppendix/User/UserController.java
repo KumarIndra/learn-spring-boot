@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
+	
 	
 	@GetMapping("/users")
 	public List<User> getAllUsers(){
@@ -44,4 +46,6 @@ public class UserController {
 		userService.deleteById(id);
 		
 	}
+	
+	
 }
