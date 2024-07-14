@@ -29,23 +29,23 @@ public class VersionController {
 	}
 	
 	//Header Request Versioning
-	@GetMapping(path = "/person", headers = "X-API-VERISON:1")
+	@GetMapping(path = "/person/header", headers = "X-API-VERISON:1")
 	public PersonV1 getNameHeaderVersioning() {
 		return new PersonV1("Indra Kumar");
 	}
 	
-	@GetMapping(path = "/person", headers = "X-API-VERISON:2")
+	@GetMapping(path = "/person/header", headers = "X-API-VERISON:2")
 	public PersonV2 getsecondNameHeadersVersioning() {
 		return new PersonV2(new Name("Indra","Kumar"));
 	}
 	
 		//content-negotiation Accept Request Versioning
-		@GetMapping(path = "/person", produces = "X-API-VERISON:1")
+		@GetMapping(path = "/person/accept", produces = "application/vnd.company.app-v1+json")
 		public PersonV1 getNameAcceptVersioning() {
 			return new PersonV1("Indra Kumar");
 		}
 		
-		@GetMapping(path = "/person", produces = "X-API-VERISON:2")
+		@GetMapping(path = "/person/accept", produces = "application/vnd.company.app-v2+json")
 		public PersonV2 getsecondNameAcceptVersioning() {
 			return new PersonV2(new Name("Indra","Kumar"));
 		}

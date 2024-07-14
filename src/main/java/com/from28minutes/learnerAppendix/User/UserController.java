@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +34,18 @@ public class UserController {
 	@GetMapping("/users/{id}")
 	public User getOneUser(@PathVariable int id) {
 		return userService.getOneUser(id);
+	}
+	
+	//Hateoas and versioning
+	@GetMapping("/users/v1/{id}")
+	public EntityModel<User> getOneUserV1(@PathVariable int id) {
+		User user = userService.getOneUser(id);
+		
+		//Hateoas
+		EntityModel<User> entityModel = EntityModel.of(user);
+		WebMvcLinkBuilder link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getAllUsers());
+		entityModel.add(link.withRel("all-users"));
+		return entityModel;
 	}
 	
 	@PostMapping("/users")
