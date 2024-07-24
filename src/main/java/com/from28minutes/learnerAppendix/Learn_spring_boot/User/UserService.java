@@ -1,4 +1,4 @@
-package com.from28minutes.learnerAppendix.User;
+package com.from28minutes.learnerAppendix.Learn_spring_boot.User;
 
 import java.util.ArrayList;
 import java.util.List;
